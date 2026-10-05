@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Братусь Аліна Віталіївна — Ортодонт</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.0.37/lenis.css">
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@emailjs/browser@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/minimal.css">
+</head>
+<body>
+  <!-- Cursor Trail -->
+  <div id="cursor-trail" aria-hidden="true">
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-tooth"></i></span>
+        <span class="logo-text">Братусь</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">Про мене</a></li>
+        <li><a href="#services" class="nav-link">Послуги</a></li>
+        <li><a href="#treatments" class="nav-link">Процес</a></li>
+        <li><a href="#gallery" class="nav-link">Галерея</a></li>
+        <li><a href="#contact" class="nav-link">Контакти</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Записатися</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-briefcase-medical"></i> Ортодонтія</div>
+      <h1 id="hero-title" class="hero-heading">Братусь Аліна Віталіївна</h1>
+      <p class="hero-subtitle">Професійний ортодонт</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number">15+</span>
+          <span class="hero-stat-label">років досвіду</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">500+</span>
+          <span class="hero-stat-label">задоволених пацієнтів</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">10</span>
+          <span class="hero-stat-label">мастер-класів</span>
+        </div>
+      </div>
+      <a href="#contact" class="hero-cta">Записати консультацію</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about" aria-labelledby="about-title">
+    <div class="section-header">
+      <span class="section-tag">Про лікаря</span>
+      <h2 id="about-title">Братусь Аліна Віталіївна</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-image">
+        <div class="about-photo-placeholder">
+          <i class="fa-solid fa-user-doctor fa-4x"></i>
+          <p>Фото праці</p>
+        </div>
+      </div>
+      <div class="about-content">
+        <p class="about-intro">Професійний ортодонт з багаторічним досвідом полегшення смоків та вирівнювання зубів.</p>
+        <div class="about-credentials">
+          <div class="credential-item">
+            <i class="fa-solid fa-diploma"></i>
+            <span>КИЕВський інститут стоматології</span>
+          </div>
+          <div class="credential-item">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Спеціаліст ортодонтії III ступеня</span>
+          </div>
+          <div class="credential-item">
+            <i class="fa-solid fa-user-nurse"></i>
+            <span>Аттестація з ортодонтії</span>
+          </div>
+        </div>
+        <ul class="about-skills">
+          <li><strong>Інвізальні брекети</strong></li>
+          <li><strong>Сабочні системи</strong></li>
+          <li><strong>Чарівні к sistem</strong></li>
+          <li><strong>Ретентори після брекетів</strong></li>
+        </ul>
+        <p class="about-description">
+          Я вірю, що здоров'я та красивий смок — це не просто вимога естетіки, а основа довговіччя та самостійності. Використовую найсвіжіші методи та технології, щоб кожен пацієнт отримував безпечні та тривале результати.
+        </p>
+        <a href="#contact" class="btn btn-secondary">Записатися на консультацію</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services" aria-labelledby="services-title">
+    <div class="section-header">
+      <span class="section-tag">Послуги</span>
+      <h2 id="services-title">Наші послуги</h2>
+    </div>
+    <div class="services-grid">
+      <article class="service-card" tabindex="0" role="button" aria-label="Брекети">
+        <div class="service-icon"><i class="fa-solid fa-brackets"></i></div>
+        <h3 class="service-title">Інвізальні брекети</h3>
+        <p class="service-description">Традиційні металічні брекети найвиведенішої якості для комфортного вирівнювання.</p>
+      </article>
+      <article class="service-card" tabindex="0" role="button" aria-label="Сабочні системи">
+        <div class="service-icon"><i class="fa-solid fa-align-center"></i></div>
+        <h3 class="service-title">Сабочні системи</h3>
+        <p class="service-description">Дискретні сабочні системи, які майже не помітні на зубі.</p>
+      </article>
+      <article class="service-card" tabindex="0" role="button" aria-label="Чарівні системи">
+        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3 class="service-title">Чарівні k-system</h3>
+        <p class="service-description">Безпечні та зрозумілі aligners для дорослих та підростків.</p>
+      </article>
+      <article class="service-card" tabindex="0" role="button" aria-label="Бляше 너머ження">
+        <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+        <h3 class="service-title">Бляше 나서ження</h3>
+        <p class="service-descriptionПрофесійне beyond-white bleying для блищачого смоку.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Treatments Section -->
+  <section id="treatments" class="treatments" aria-labelledby="treatments-title">
+    <div class="section-header">
+      <span class="section-tag">Процес лікування</span>
+      <h2 id="treatments-title">Ваш шлях до красивого смоку</h2>
+    </div>
+    <div class="treatments-timeline">
+      <div class="timeline-step active" data-step="1">
+        <div class="step-number">1</div>
+        <div class="step-label">Консультація</div>
+        <p class="step-description">Обговорення ваших бажань та огляд стану зубів.</p>
+      </div>
+      <div class="timeline-step" data-step="2">
+        <div class="step-number">2</div>
+        <div class="step-label">Диагностика</div>
+        <p class="step-description">3D-сканування, фото та рентген для планування.</p>
+      </div>
+      <div class="timeline-step" data-step="3">
+        <div class="step-number">3</div>
+        <div class="step-label">Планування</div>
+        <p class="step-description">Індивідуальна схема лікування з 3D-моделлю.</p>
+      </div>
+      <div class="timeline-step" data-step="4">
+        <div class="step-number">4</div>
+        <div class="step-label">Лікування</div>
+        <p class="step-description">Прямий процедурний процес з моніторингом.</p>
+      </div>
+      <div class="timeline-step" data-step="5">
+        <div class="step-number">5</div>
+        <div class="step-label">Фіксація</div>
+        <p class="step-description">Ретентори та утримання результату.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery" aria-labelledby="gallery-title">
+    <div class="section-header">
+      <span class="section-tag">Галерея</span>
+      <h2 id="gallery-title">Результати</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-lightbox="before-after">
+        <div class="gallery-image">
+          <div class="placeholder-img" style="background: linear-gradient(135deg, #f0f9ff 0%, #e8f4f8 100%);">
+            <div class="placeholder-icon"><i class="fa-solid fa-smile"></i></div>
+          </div>
+        </div>
+        <div class="gallery-caption">Перед</div>
+      </div>
+      <div class="gallery-item" data-lightbox="before-after">
+        <div class="gallery-image">
+          <div class="placeholder-img" style="background: linear-gradient(135deg, #f0f9ff 0%, #e8f4f8 100%);">
+            <div class="placeholder-icon"><i class="fa-solid fa-smile"></i></div>
+          </div>
+        </div>
+        <div class="gallery-caption">Після</div>
+      </div>
+      <div class="gallery-item" data-lightbox="before-after">
+        <div class="gallery-image">
+          <div class="placeholder-img" style="background: linear-gradient(135deg, #f0f9ff 0%, #e8f4f8 100%);">
+            <div class="placeholder-icon"><i class="fa-solid fa-smile"></i></div>
+          </div>
+        </div>
+        <div class="gallery-caption">Перед</div>
+      </div>
+      <div class="gallery-item" data-lightbox="before-after">
+        <div class="gallery-image">
+          <div class="placeholder-img" style="background: linear-gradient(135deg, #f0f9ff 0%, #e8f4f8 100%);">
+            <div class="placeholder-icon"><i class="fa-solid fa-smile"></i></div>
+          </div>
+        </div>
+        <div class="gallery-caption">Після</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials" aria-labelledby="testimonials-title">
+    <div class="section-header">
+      <span class="section-tag">Відгуки</span>
+      <h2 id="testimonials-title">Що кажуть пацієнти</h2>
+    </div>
+    <div class="testimonials-carousel">
+      <div class="testimonial-card">
+        <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+        <p class="testimonial-text">
+          "Благодарю за професіональний підхід та туршій результат! Смок тепер беззляковий та красивий. Всім одерживаю."
+        </p>
+        <div class="testimonial-author">
+          <span class="author-name">Марія К.</span>
+          <span class="author-role">Пацієнт</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+        <p class="testimonial-text">
+          "Перший раз відвідував стоматолога без страху. Лікар пояснив все детально, ніякого дискомфорту."
+        </p>
+        <div class="testimonial-author">
+          <span class="author-name">Олексій С.</span>
+          <span class="author-role">Пацієнт</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote"><i class="fa-solid fa-quote-left"></i></div>
+        <p class="testimonial-text">
+          "Рекомендую всім своїм друзям. Кваліфікований підхід, сучасні методи, realist результати."
+        </p>
+        <div class="testimonial-author">
+          <span class="author-name">Олена П.</span>
+          <span class="author-role">Пацієнт</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq" aria-labelledby="faq-title">
+    <div class="section-header">
+      <span class="section-tag">Часті запитання</span>
+      <h2 id="faq-title">Часті запитання</h2>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item" data-faq="1">
+        <div class="faq-question">Будь-який вік можна вирівнювати зубі?</div>
+        <button class="faq-toggle" aria-label="Закрити запитання 1">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+      <div class="faq-item" data-faq="2">
+        <div class="faq-question">Скільки триває процес ортодонтського лікування?</div>
+        <button class="faq-toggle" aria-label="Закрити запитання 2">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+      <div class="faq-item" data-faq="3">
+        <div class="faq-question">Чи болісні процедури з брекетами?</div>
+        <button class="faq-toggle" aria-label="Закрити запитання 3">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+      <div class="faq-item" data-faq="4">
+        <div class="faq-question">Частота візитів до лікаря?</div>
+        <button class="faq-toggle" aria-label="Закрити запитання 4">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="section-header">
+      <span class="section-tag">Контакти</span>
+      <h2 id="contact-title">Запишіться на консультацію</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+380 99 123 4567</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>info@bratus.com.ua</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-map"></i>
+          <span>м. Київ, вул. Стоматологічна 15</span>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-clock"></i>
+          <span>Пн-Пт: 09:00 - 20:00, Сб: 10:00 - 16:00</span>
+        </div>
+      </div>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Ваше ім'я" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Телефон (опціонально)">
+        </div>
+        <div class="form-group">
+          <select>
+            <option value="">Обрати послугу</option>
+            <option value="consultation">Консультація ортодонта</option>
+            <option value="braces">Інвізальні брекети</option>
+            <option value="aligners">Сабочні системи</option>
+            <option value="whitening">Бляше 나서ження</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Ваше повідомлення" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Надіслати заявку</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-text">Братусь</span>
+        <p class="footer-description">Професійний ортодонт для здорова та красива смок.</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#about">Про мене</a></li>
+          <li><a href="#services">Послуги</a></li>
+          <li><a href="#treatments">Процес</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#contact">Контакти</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+      <p class="footer-copyright">© 2026 Братусь Аліна Віталіївна. Всі права захищено.</p>
+    </div>
+  </footer>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen" aria-live="polite">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <p>Завантаження...</p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
