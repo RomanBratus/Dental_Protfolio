@@ -1818,6 +1818,7 @@ body {
   padding-top: 32px;
   border-top: 1px solid var(--border-subtle);
   margin-top: 36px;
+  position: relative;
 }
 
 .quiz-prev-btn {
@@ -1885,6 +1886,7 @@ body {
    ========================================================================== */
 .roadmap-section {
   background: var(--bg-secondary);
+  padding: 100px 0;
 }
 
 .roadmap-timeline {
@@ -1987,6 +1989,7 @@ body {
    ========================================================================== */
 .testimonials-section {
   position: relative;
+  padding: 100px 0;
 }
 
 .testimonials-slider {
@@ -2064,6 +2067,7 @@ body {
    ========================================================================== */
 .faq-section {
   background: var(--bg-secondary);
+  padding: 100px 0;
 }
 
 .faq-accordion-wrap {
@@ -2165,6 +2169,7 @@ body {
 .contact-section {
   position: relative;
   background: var(--bg-secondary);
+  padding: 100px 0;
 }
 
 .contact-panel-card {
