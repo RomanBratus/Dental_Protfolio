@@ -94,11 +94,6 @@ class ComparisonSlider {
     percent = Math.max(0, Math.min(100, percent));
     if (this.beforeWrapper) this.beforeWrapper.style.width = `${percent}%`;
     if (this.handle) this.handle.style.left = `${percent}%`;
-
-    // Ensure image retains proper container width for seamless pixel alignment
-    if (this.beforeImg && this.container) {
-      this.beforeImg.style.width = `${this.container.offsetWidth}px`;
-    }
   }
 
   loadCase(index) {
@@ -167,12 +162,6 @@ class ComparisonSlider {
 
     window.addEventListener('touchend', () => {
       this.isDragging = false;
-    });
-
-    window.addEventListener('resize', () => {
-      if (this.beforeImg && this.container) {
-        this.beforeImg.style.width = `${this.container.offsetWidth}px`;
-      }
     });
 
     // Filter Buttons
