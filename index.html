@@ -193,42 +193,64 @@
         </div>
 
         <!-- Comparison Showcase Box -->
-        <div class="comparison-showcase-box">
-          <div class="comparison-slider-wrapper">
-            <div id="comparison-slider-stage" class="comparison-stage">
-              <!-- After Image (Base) -->
-              <img
-                src="assets/images/2.jpg"
-                alt="Результат лікування Після"
-                class="comparison-image comparison-image-after"
-                onerror="this.src='https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80'"
-              >
-
-              <!-- Before Image (Clipped Overlay) -->
-              <div class="comparison-image-before-wrapper">
+        <div class="cases-layout-grid">
+          <div class="slider-panel">
+            <div class="comparison-slider-wrapper">
+              <div id="comparison-slider-stage" class="comparison-stage">
+                <!-- After Image (Base) -->
                 <img
-                  src="assets/images/1.jpg"
-                  alt="Стан зубів До лікування"
-                  class="comparison-image comparison-image-before"
-                  onerror="this.src='https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80'"
+                  src="assets/images/2.jpg"
+                  alt="Результат лікування Після"
+                  class="comparison-image comparison-image-after"
+                  onerror="this.src='https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80'"
                 >
-                <div class="stage-label label-before">ДО ЛІКУВАННЯ</div>
-              </div>
-              <div class="stage-label label-after">ПІСЛЯ</div>
 
-              <!-- Interactive Drag Handle Bar -->
-              <div class="comparison-handle" aria-label="Слайдер порівняння До і Після">
-                <div class="handle-line"></div>
-                <div class="handle-thumb">
-                  <i class="fa-solid fa-arrows-left-right"></i>
+                <!-- Before Image (Clipped Overlay) -->
+                <div class="comparison-image-before-wrapper" style="width: 50%;">
+                  <img
+                    src="assets/images/1.jpg"
+                    alt="Стан зубів До лікування"
+                    class="comparison-image comparison-image-before"
+                    onerror="this.src='https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80'"
+                  >
+                  <div class="stage-label label-before">ДО ЛІКУВАННЯ</div>
                 </div>
-                <div class="handle-line"></div>
+                <div class="stage-label label-after">ПІСЛЯ</div>
+
+                <!-- Interactive Drag Handle Bar -->
+                <div class="comparison-handle" aria-label="Слайдер порівняння До і Після" style="left: 50%;">
+                  <div class="handle-line"></div>
+                  <div class="handle-thumb">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                  </div>
+                  <div class="handle-line"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thumbnail Strip -->
+            <div class="cases-thumbnail-grid">
+              <div class="case-thumb" data-index="0">
+                <img src="assets/images/2.jpg" alt="Кейс 1">
+                <span class="thumb-label">Елайнери</span>
+              </div>
+              <div class="case-thumb" data-index="1">
+                <img src="assets/images/4.jpg" alt="Кейс 2">
+                <span class="thumb-label">Кераміка</span>
+              </div>
+              <div class="case-thumb" data-index="2">
+                <img src="assets/images/6.jpg" alt="Кейс 3">
+                <span class="thumb-label">Метал</span>
+              </div>
+              <div class="case-thumb" data-index="3">
+                <img src="assets/images/8.jpg" alt="Кейс 4">
+                <span class="thumb-label">Гнатологія</span>
               </div>
             </div>
           </div>
 
-          <!-- Dynamic Case Clinical Description Card -->
-          <div class="case-meta-card">
+          <!-- Case Info Panel -->
+          <div class="case-info-panel">
             <div class="case-badge-pill">Клінічний розбір</div>
             <h3 id="case-active-title" class="case-active-title">Виправлення скупченості зубів елайнерами Invisalign</h3>
 
@@ -238,7 +260,7 @@
                 <span id="case-active-diagnosis" class="spec-val">Скупченість різців верхньої та нижньої щелеп, дефіцит місця 4 мм</span>
               </div>
               <div class="spec-row">
-                <span class="spec-name"><i class="fa-regular fa-clock"></i> Термін лікування:</span>
+                <span class="spec-name"><i class="fa-regular fa-clock"></i> Термін:</span>
                 <span id="case-active-duration" class="spec-val">11 місяців</span>
               </div>
               <div class="spec-row">
@@ -246,7 +268,7 @@
                 <span id="case-active-apparatus" class="spec-val">Invisalign Full (24 капи)</span>
               </div>
               <div class="spec-row">
-                <span class="spec-name"><i class="fa-solid fa-user"></i> Вік пацієнта:</span>
+                <span class="spec-name"><i class="fa-solid fa-user"></i> Вік:</span>
                 <span id="case-active-age" class="spec-val">28 років</span>
               </div>
             </div>
@@ -257,46 +279,6 @@
             </div>
 
             <a href="#contact" class="btn btn-primary btn-block">Хочу схожий результат</a>
-          </div>
-        </div>
-
-        <!-- Thumbnail Switcher Strip -->
-        <div class="cases-thumbnail-grid">
-          <div class="case-card" data-index="0">
-            <div class="case-thumb-img-box">
-              <img src="assets/images/2.jpg" onerror="this.src='https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&q=80'" alt="Кейс 1">
-            </div>
-            <div class="case-thumb-info">
-              <span class="thumb-category">Елайнери</span>
-              <span class="thumb-title">Invisalign при скупченості</span>
-            </div>
-          </div>
-          <div class="case-card" data-index="1">
-            <div class="case-thumb-img-box">
-              <img src="assets/images/4.jpg" onerror="this.src='https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=400&q=80'" alt="Кейс 2">
-            </div>
-            <div class="case-thumb-info">
-              <span class="thumb-category">Кераміка</span>
-              <span class="thumb-title">Damon Clear (Глибокий прикус)</span>
-            </div>
-          </div>
-          <div class="case-card" data-index="2">
-            <div class="case-thumb-img-box">
-              <img src="assets/images/6.jpg" onerror="this.src='https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=80'" alt="Кейс 3">
-            </div>
-            <div class="case-thumb-info">
-              <span class="thumb-category">Метал</span>
-              <span class="thumb-title">Damon Q2 (Ротація іклів)</span>
-            </div>
-          </div>
-          <div class="case-card" data-index="3">
-            <div class="case-thumb-img-box">
-              <img src="assets/images/8.jpg" onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80'" alt="Кейс 4">
-            </div>
-            <div class="case-thumb-info">
-              <span class="thumb-category">Гнатологія</span>
-              <span class="thumb-title">СНЩС & Сплінт-терапія</span>
-            </div>
           </div>
         </div>
       </div>

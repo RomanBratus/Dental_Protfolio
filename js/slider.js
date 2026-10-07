@@ -184,9 +184,12 @@ class ComparisonSlider {
     });
 
     // Thumbnail Cards Click
-    const caseCards = document.querySelectorAll('.case-card');
-    caseCards.forEach((card, index) => {
-      card.addEventListener('click', () => {
+    const caseThumbs = document.querySelectorAll('.case-thumb');
+    caseThumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        // Update active state
+        caseThumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
         this.loadCase(index % casesDatabase.length);
         this.container.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
