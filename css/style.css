@@ -81,16 +81,16 @@
   --glass-border: rgba(0, 0, 0, 0.08);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
 
-  --accent-mint: #00966b;
-  --accent-mint-glow: rgba(0, 150, 107, 0.25);
-  --accent-mint-light: rgba(0, 150, 107, 0.10);
+  --accent-mint: #00f0b5;
+  --accent-mint-glow: rgba(0, 240, 181, 0.25);
+  --accent-mint-light: rgba(0, 240, 181, 0.10);
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #94a3b8;
 
   --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-focus: rgba(0, 150, 107, 0.4);
+  --border-focus: rgba(0, 204, 153, 0.5);
   --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
@@ -1527,7 +1527,7 @@ body {
   background: var(--bg-glass-card);
   backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
   -webkit-backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-  border: 1px solid var(--border-focus);
+  border: 1px solid var(--glass-border);
   padding: 14px 20px;
   border-radius: var(--radius-md);
   box-shadow: var(--glass-shadow);
