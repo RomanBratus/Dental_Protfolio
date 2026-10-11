@@ -361,6 +361,19 @@ body {
   fill: var(--text-dark);
 }
 
+/* FAQ header variant — full-width accordion button */
+.btn-primary.faq-header {
+  width: 100%;
+  justify-content: space-between;
+  text-align: left;
+  padding: 22px 26px;
+}
+
+/* Hide the default btn-icon inside FAQ header */
+.btn-primary.faq-header .btn-icon {
+  display: none;
+}
+
 .btn-secondary {
   background: var(--bg-glass-card);
   color: var(--text-primary);
@@ -2352,14 +2365,14 @@ body {
   transition: all var(--transition-smooth);
 }
 
-[data-theme="dark"] .faq-icon {
-  background: #f8fafc;
-}
-
 .faq-item.active .faq-icon {
   transform: rotate(45deg);
   background: var(--accent-mint);
   color: var(--text-dark);
+}
+
+[data-theme="dark"] .faq-icon {
+  background: #ffffff;
 }
 
 .faq-body {
