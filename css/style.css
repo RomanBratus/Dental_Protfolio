@@ -345,7 +345,6 @@ body {
 
 [data-theme="light"] .btn-primary {
   color: var(--text-primary);
-  background: var(--accent-mint-light);
 }
 
 [data-theme="light"] .btn-primary .btn-icon {
@@ -1946,7 +1945,6 @@ body {
   }
   .experience-card-floating {
     right: 15px;
-    bottom: -15px;
   }
 }
 
@@ -1962,6 +1960,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  padding-top: 24px;
 }
 
 .service-card {
