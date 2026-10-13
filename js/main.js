@@ -66,6 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // FAQ glow effect — sync SVG rect rx with button border-radius
+  document.querySelectorAll('.btn-primary.faq-header').forEach(element => {
+    const rx = getComputedStyle(element).borderRadius;
+    const glowRects = element.querySelectorAll('.glow-container rect');
+
+    glowRects.forEach(rect => {
+      rect.setAttribute('rx', rx);
+    });
+  });
+
+  // FAQ glow effect — sync SVG rect rx with button border-radius
+  document.querySelectorAll('.btn-primary.faq-header').forEach(element => {
+    const rx = getComputedStyle(element).borderRadius;
+    const glowRects = element.querySelectorAll('.glow-container rect');
+
+    glowRects.forEach(rect => {
+      rect.setAttribute('rx', rx);
+    });
+  });
+
   // Booking Form Submission & Toast Alert
   const bookingForm = document.getElementById('appointment-form');
   const toast = document.getElementById('toast-notification');

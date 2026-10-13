@@ -204,13 +204,13 @@ body {
 }
 
 .section-spacing {
-  padding: 120px 0;
+  padding: 50px 0;
   position: relative;
 }
 
 @media (max-width: 900px) {
   .section-spacing {
-    padding: 80px 0;
+    padding: 50px 0;
   }
 }
 
@@ -250,7 +250,6 @@ body {
     inset -6px 6px 1px -6px rgba(255, 255, 255, 0.55),
     inset 0 0 2px rgba(0, 0, 0, 0.8),
     0 4px 8px rgba(0, 0, 0, 0.2);
-  filter: brightness(0.9);
   overflow: visible;
   padding: 14px 30px;
 }
@@ -361,17 +360,114 @@ body {
   fill: var(--text-dark);
 }
 
-/* FAQ header variant — full-width accordion button */
+/* FAQ header variant — full-width accordion button with glow effect */
 .btn-primary.faq-header {
+  --glow-line-color: #fff;
+  --glow-line-thickness: 2px;
+  --glow-line-length: 20;
+  --glow-blur-color: #fff;
+  --glow-blur-size: 10px;
+  --animation-speed: 1200ms;
+  --container-offset: 100px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: transparent;
+  padding: 22px 26px;
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  position: relative;
   width: 100%;
   justify-content: space-between;
   text-align: left;
-  padding: 22px 26px;
+  display: inline-flex;
+  align-items: center;
+  --r: none; 
+  --tr: none;
 }
 
 /* Hide the default btn-icon inside FAQ header */
 .btn-primary.faq-header .btn-icon {
   display: none;
+}
+
+.glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+}
+
+.glow-blur, .glow-line {
+  width: calc(100% - var(--container-offset));
+  height: calc(100% - var(--container-offset));
+  x: calc(var(--container-offset) / 2);
+  y: calc(var(--container-offset) / 2);
+  rx: var(--radius-md);
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: var(--glow-line-length) calc(50 - var(--glow-line-length));
+}
+
+.glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+
+.glow-blur {
+  filter: blur(var(--glow-blur-size));
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+
+.btn-primary.faq-header:is(:hover, :focus) .glow-blur,
+.btn-primary.faq-header:is(:hover, :focus) .glow-line {
+  stroke-dashoffset: -80px;
+  transition: stroke-dashoffset var(--animation-speed) ease-in, stroke-dasharray var(--animation-speed) ease-in;
+}
+
+.btn-primary.faq-header:is(:hover, :focus) .glow-container {
+  animation: glow-visibility var(--animation-speed) ease-in;
+}
+
+@keyframes glow-visibility {
+  0%, 100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+}
+
+[data-theme="dark"] .btn-primary.faq-header {
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+[data-theme="light"] .btn-primary.faq-header {
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+/* Active state for accordion */
+.btn-primary.faq-header[aria-expanded="true"] {
+  background: var(--bg-surface-elevated);
+}
+
+/* Icon rotation for active state */
+.btn-primary.faq-header[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+  background: var(--accent-mint);
+  color: var(--text-dark);
+}
+
+/* Hover state */
+.btn-primary.faq-header:hover {
+  border-color: var(--accent-mint);
 }
 
 .btn-secondary {
@@ -802,6 +898,11 @@ body {
   padding-top: 140px;
   padding-bottom: 80px;
   overflow: hidden;
+  background: radial-gradient(ellipse at top, rgba(16, 185, 129, 0.02) 0%, transparent 60%),
+              url('../images/hero-bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #canvas-3d {
@@ -1120,7 +1221,7 @@ body {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .cases-filter-bar {
@@ -1555,7 +1656,7 @@ body {
    ========================================================================== */
 .about-section {
   position: relative;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .about-grid {
@@ -1652,6 +1753,45 @@ body {
   font-size: 0.94rem;
   line-height: 1.7;
   color: var(--text-secondary);
+}
+
+/* Benefits list styling */
+.about-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+.about-benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.about-benefits-list li i {
+  font-size: 1.1rem;
+  color: var(--accent-mint);
+  flex-shrink: 0;
+}
+
+/* Signature block with booking CTA + doctor seal */
+.about-signature-block {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.verified-doctor-seal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.verified-doctor-seal i {
+  color: var(--accent-mint);
+  font-size: 1.05rem;
 }
 
 /* Education Timeline & Credentials */
@@ -1815,7 +1955,7 @@ body {
    ========================================================================== */
 .services-section {
   background: var(--bg-secondary);
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .services-bento-grid {
@@ -1935,7 +2075,7 @@ body {
 .quiz-section {
   position: relative;
   overflow: hidden;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .quiz-container-card {
@@ -2116,7 +2256,7 @@ body {
    ========================================================================== */
 .roadmap-section {
   background: var(--bg-secondary);
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .roadmap-timeline {
@@ -2219,7 +2359,7 @@ body {
    ========================================================================== */
 .testimonials-section {
   position: relative;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .testimonials-slider {
@@ -2299,7 +2439,7 @@ body {
    ========================================================================== */
 .faq-section {
   background: var(--bg-secondary);
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .faq-accordion-wrap {
@@ -2373,6 +2513,7 @@ body {
 
 [data-theme="dark"] .faq-icon {
   background: #ffffff;
+  color: #000000;
 }
 
 .faq-body {
@@ -2392,6 +2533,7 @@ body {
 
 .faq-item.active .faq-body > p {
   padding-bottom: 22px;
+  padding-top: 22px;
 }
 
 .faq-body p {
@@ -2399,6 +2541,7 @@ body {
   color: var(--text-secondary);
   line-height: 1.65;
   margin: 0;
+  padding-top: 22px;
 }
 
 /* ==========================================================================
@@ -2407,7 +2550,7 @@ body {
 .contact-section {
   position: relative;
   background: var(--bg-secondary);
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .contact-panel-card {
@@ -2501,58 +2644,6 @@ body {
 
 .contact-detail-item a:hover {
   color: var(--accent-mint);
-}
-
-.contact-messengers {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.contact-messengers > span {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
-.messengers-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.msg-btn {
-  flex: 1;
-  min-width: 120px;
-  padding: 12px 16px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: #fff;
-  transition: all var(--transition-fast);
-}
-
-.msg-tg {
-  background: #229ed9;
-}
-
-.msg-wa {
-  background: #25d366;
-}
-
-.msg-ig {
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-}
-
-.msg-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Booking Form Column */
@@ -3186,7 +3277,7 @@ body {
 /* Section Spacing — Mobile */
 @media (max-width: 768px) {
   .section-spacing {
-    padding: 60px 0;
+    padding: 50px 0;
   }
 
   .section-header {
