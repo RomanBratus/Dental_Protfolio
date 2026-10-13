@@ -76,19 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // FAQ glow effect — sync SVG rect rx with button border-radius
-  document.querySelectorAll('.btn-primary.faq-header').forEach(element => {
-    const rx = getComputedStyle(element).borderRadius;
-    const glowRects = element.querySelectorAll('.glow-container rect');
-
-    glowRects.forEach(rect => {
-      rect.setAttribute('rx', rx);
-    });
-  });
-
   // Booking Form Submission & Toast Alert
   const bookingForm = document.getElementById('appointment-form');
   const toast = document.getElementById('toast-notification');
+  const TELEGRAM_BOT_TOKEN = '8910552382:AAH7c35wVozdJSfVZ9FN6ueQ0qRNGTjXqLk';
+  const TELEGRAM_CHAT_ID = '620196610';
 
   function showToast(title, message) {
     const titleEl = toast?.querySelector('.toast-title');
