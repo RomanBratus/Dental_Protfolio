@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingForm = document.getElementById('appointment-form');
   const toast = document.getElementById('toast-notification');
   const TELEGRAM_BOT_TOKEN = '8717914768:AAEWpxMjbItLrUiG7FytiZ_TNt0shBHiUCg';
-  const TELEGRAM_CHAT_ID = '620196610';
+  const TELEGRAM_CHAT_ID = '-5024101596';
 
   function showToast(title, message) {
     const titleEl = toast?.querySelector('.toast-title');
