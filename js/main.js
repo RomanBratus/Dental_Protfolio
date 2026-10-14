@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function buildTelegramMessage(data) {
     return [
-      '📋 *Нове заявлення на запис*',
+      '📋 *Первинний пацієнт на запис*',
       '',
       `👤 *Ім\'я:* ${data.name}`,
       `📞 *Телефон:* ${data.phone}`,
