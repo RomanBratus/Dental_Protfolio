@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Booking Form Submission & Toast Alert
   const bookingForm = document.getElementById('appointment-form');
   const toast = document.getElementById('toast-notification');
-  const TELEGRAM_BOT_TOKEN = '8910552382:AAH7c35wVozdJSfVZ9FN6ueQ0qRNGTjXqLk';
-  const TELEGRAM_CHAT_ID = '620196610';
+  const TELEGRAM_BOT_TOKEN = '8717914768:AAEWpxMjbItLrUiG7FytiZ_TNt0shBHiUCg';
+  const TELEGRAM_CHAT_ID = '-5024101596';
 
   function showToast(title, message) {
     const titleEl = toast?.querySelector('.toast-title');
@@ -94,7 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toast.classList.remove('show'), 5000);
   }
 
-  bookingForm?.addEventListener('submit', (e) => {
+  function buildTelegramMessage(data) {
+    return [
+      '📋 *Нове заявлення на запис*',
+      '',
+      `👤 *Ім\'я:* ${data.name}`,
+      `📞 *Телефон:* ${data.phone}`,
+      `📍 *Локація:* ${data.location}`,
+      `🦷 *Послуга:* ${data.service}`,
+      `💬 *Коментар:* ${data.comment || '—'}`,
+    ].join('\n');
+  }
+
+  bookingForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const submitBtn = bookingForm.querySelector('button[type="submit"]');
@@ -105,12 +117,34 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.setAttribute('disabled', 'true');
     }
 
-    setTimeout(() => {
-      if (submitBtn) {
-        submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Заявку прийнято!';
-      }
+    const data = {
+      name: bookingForm.patient-name.value.trim(),
+      phone: bookingForm.patient-phone.value.trim(),
+      location: bookingForm.location-select.selectedOptions[0]?.textContent || '',
+      service: bookingForm.service-select.selectedOptions[0]?.textContent || '',
+      comment: bookingForm.booking-comment.value.trim(),
+    };
 
-      showToast('Запис успішно оформлено!', 'Ми зв’яжемося з вами протягом 15 хвилин у месенджері або телефоном.');
+    const message = buildTelegramMessage(data);
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: 'HTML',
+          disable_web_page_preview: true,
+        }),
+      });
+
+      const json = await response.json();
+
+      if (!json.ok) throw new Error(json.description || 'Telegram API error');
+
+      if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Від!';
+      showToast('Дякую!', 'Ваша заявка успішно відправлена.');
 
       setTimeout(() => {
         bookingForm.reset();
@@ -119,6 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.removeAttribute('disabled');
         }
       }, 3000);
-    }, 1000);
+    } catch (err) {
+      console.error('Telegram send failed:', err);
+      if (submitBtn) submitBtn.innerHTML = originalText;
+      showToast('Помилка', 'Не вдалося відправити. Спробуйте ще раз.');
+      if (submitBtn) submitBtn.removeAttribute('disabled');
+    }
   });
 });
