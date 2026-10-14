@@ -20,6 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
 
+  // Handle iOS Safari autoplay restrictions for hero video
+  const heroVideo = document.querySelector('.hero-bg');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.playsInline = true;
+
+    // Try to autoplay immediately (works on most browsers)
+    heroVideo.play().catch(() => {
+      // If that fails (likely on iOS), wait for first user interaction
+      const tryPlay = () => {
+        heroVideo.play().then(() => {
+          document.removeEventListener('touchstart', tryPlay);
+          document.removeEventListener('scroll', tryPlay);
+        }).catch(() => {
+          // Still can't play — maybe the video has audio, so we need to handle that
+          console.warn('Video autoplay failed — likely due to audio track');
+        });
+      };
+      document.addEventListener('touchstart', tryPlay, { once: true });
+      document.addEventListener('scroll', tryPlay, { once: true });
+    });
+  }
+
   // Mobile: ensure hero video plays automatically on first interaction
   const heroVideo = document.querySelector('.hero-bg');
   if (heroVideo) {
@@ -116,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function buildTelegramMessage(data) {
     return [
-      '📋 *Первинний пацієнт на запис*',
+      '📝 *Запис пацієнта з сайту*',
       '',
       `👤 *Ім\'я:* ${data.name}`,
       `📞 *Телефон:* ${data.phone}`,
