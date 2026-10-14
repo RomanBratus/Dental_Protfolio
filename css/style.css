@@ -914,6 +914,35 @@ body {
   pointer-events: none;
 }
 
+/* Hero background video */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-attenuator {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+/* 45–50% приглушення відео напівпрозорим шаром під фон + текст */
+[data-theme="dark"] .hero-attenuator {
+  background: rgba(7, 11, 14, 0.80);
+}
+
+[data-theme="light"] .hero-attenuator {
+  background: rgba(255, 255, 255, 0.80);
+}
+
+
 .hero-glow-sphere {
   position: absolute;
   width: 600px;
@@ -1053,7 +1082,6 @@ body {
 
 .stat-label {
   font-size: 0.82rem;
-  color: var(--text-muted);
   margin-top: 6px;
   font-weight: 500;
 }
@@ -1216,439 +1244,6 @@ body {
 /* ==========================================================================
    INTERACTIVE BEFORE / AFTER SLIDER SECTION
    ========================================================================== */
-.cases-section {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 50px 0;
-}
-
-.cases-filter-bar {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-
-.filter-tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 22px;
-  border-radius: var(--radius-full);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.filter-tab:hover {
-  color: var(--text-primary);
-  border-color: rgba(0, 240, 181, 0.3);
-}
-
-.filter-tab.active {
-  background: var(--accent-mint-light);
-  color: var(--accent-mint);
-  border-color: var(--accent-mint);
-  box-shadow: 0 0 15px var(--accent-mint-glow);
-}
-
-/* Main Interactive Comparison Stage */
-.comparison-stage {
-  max-width: 980px;
-  margin: 0 auto 50px;
-  background: var(--bg-glass-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--glass-shadow);
-  position: relative;
-  backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-}
-
-.comparison-slider-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  user-select: none;
-  overflow: hidden;
-  cursor: ew-resize;
-  background: #000;
-}
-
-.comparison-showcase-box {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-/* New Grid Layout: Slider + Info Panel */
-.cases-layout-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
-  gap: 30px;
-  align-items: start;
-}
-
-.slider-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.case-info-panel {
-  background: var(--bg-glass-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.case-info-panel .case-badge-pill {
-  align-self: flex-start;
-}
-
-.case-info-panel .case-active-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.case-info-panel .case-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.case-info-panel .spec-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.85rem;
-}
-
-.case-info-panel .spec-name {
-  color: var(--text-muted);
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.case-info-panel .spec-name i {
-  color: var(--accent-mint);
-  width: 16px;
-  text-align: center;
-}
-
-.case-info-panel .spec-val {
-  color: var(--text-secondary);
-  padding-left: 24px;
-}
-
-.case-summary-block h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.case-summary-block p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-/* New Thumbnail Style */
-.case-thumb {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all var(--transition-fast);
-}
-
-.case-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-slow);
-}
-
-.case-thumb:hover img,
-.case-thumb.active img {
-  transform: scale(1.06);
-}
-
-.case-thumb.active {
-  border-color: var(--accent-mint);
-  box-shadow: 0 0 20px var(--accent-mint-glow);
-}
-
-.thumb-label {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  padding: 4px 10px;
-  background: rgba(7, 11, 14, 0.8);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--accent-mint);
-  border: 1px solid rgba(0, 240, 181, 0.3);
-}
-
-@media (max-width: 640px) {
-  .comparison-slider-wrapper {
-    aspect-ratio: 4 / 3;
-  }
-}
-
-.comparison-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.comparison-image-after {
-  z-index: 1;
-}
-
-.comparison-image-before-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 2;
-  will-change: width;
-}
-
-.comparison-image-before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.comparison-handle {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 4px;
-  height: 100%;
-  background: #ffffff;
-  z-index: 3;
-  transform: translateX(-50%);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  pointer-events: none;
-  will-change: left;
-}
-
-.handle-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ffffff;
-  color: var(--text-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-mint);
-  border: 3px solid var(--accent-mint);
-}
-
-.comparison-label {
-  position: absolute;
-  bottom: 20px;
-  padding: 6px 14px;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: var(--radius-full);
-  z-index: 4;
-  pointer-events: none;
-}
-
-.label-before {
-  left: 20px;
-}
-
-.label-after {
-  right: 20px;
-}
-
-.case-info-bar {
-  padding: 24px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  border-top: 1px solid var(--border-subtle);
-  background: var(--bg-surface-elevated);
-}
-
-.case-info-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.case-info-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-.case-info-meta span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.case-info-meta i {
-  color: var(--accent-mint);
-}
-
-/* Case Grid / Gallery Miniatures */
-.cases-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-.case-card {
-  background: var(--bg-glass-card);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: all var(--transition-normal);
-  cursor: pointer;
-  backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) var(--glass-saturate);
-}
-
-.case-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(0, 240, 181, 0.35);
-  box-shadow: var(--glass-shadow), 0 0 25px rgba(0, 240, 181, 0.15);
-}
-
-.case-card-thumb {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.case-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-slow);
-}
-
-.case-card:hover .case-card-thumb img {
-  transform: scale(1.06);
-}
-
-.case-badge-pill {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 4px 12px;
-  background: rgba(7, 11, 14, 0.8);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent-mint);
-  border: 1px solid rgba(0, 240, 181, 0.3);
-}
-
-.case-card-content {
-  padding: 20px;
-}
-
-.case-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.case-card-desc {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-
-.case-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 12px;
-}
-
-.case-thumb-img-box {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--bg-secondary);
-}
-
-.case-thumb-img-box img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-  background: var(--bg-secondary);
-  transition: transform var(--transition-slow);
-}
-
-.case-card:hover .case-thumb-img-box img {
-  transform: scale(1.06);
-}
-
-.case-thumb-info {
-  padding: 14px 16px;
-}
 
 /* ==========================================================================
    ABOUT DOCTOR SECTION
@@ -2950,25 +2545,9 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
-
-  .cases-layout-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-info-panel {
-    padding: 24px;
-  }
 }
 
 @media (max-width: 768px) {
-  .cases-layout-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-info-panel {
-    padding: 24px;
-  }
-
   .footer {
     padding: 40px 0 24px;
   }
@@ -3082,39 +2661,12 @@ body {
 
 /* Cases Filter & Comparison — Mobile */
 @media (max-width: 768px) {
-  .cases-filter-bar {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .filter-tab {
-    flex: 1 1 calc(50% - 5px);
-    font-size: 0.8rem;
-    padding: 10px 14px;
-  }
-
-  .comparison-showcase-box {
-    flex-direction: column;
-  }
+    }
 
   .case-meta-card {
     padding: 24px 20px;
   }
 
-  .cases-thumbnail-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .filter-tab {
-    flex: 1 1 100%;
-  }
-
-  .cases-thumbnail-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* About Section — Tablet & Mobile */

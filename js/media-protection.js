@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  var MEDIA_SELECTOR = 'img, video, audio, canvas, figure, .case-thumb-img-box, .comparison-stage, .about-image-card';
+  var MEDIA_SELECTOR = 'img, video, audio, canvas, figure, .about-image-card';
 
   // 1. Контекстне меню (ПКМ) на медіа-елементах
   document.addEventListener('contextmenu', function (e) {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Др. Аліна Братусь — Естетична та Цифрова Ортодонтія</title>
-  <meta name="description" content="Елітна ортодонтія в Києві. Виправлення прикусу елайнерами Invisalign та самолігуючими брекетами Damon. Цифрове 3D-моделювання посмішки від лікаря-ортодонта Братусь Аліни Віталіївни.">
+  <meta name="description" content="Елітна ортодонтія в Києві. Виправлення прикусу елайнерами Invisalign та керамічними брекетами GC Chic. Цифрове 3D-моделювання посмішки від лікаря-ортодонта Братусь Аліни Віталіївни.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
@@ -53,7 +53,6 @@
       <!-- Desktop Nav Links -->
       <nav class="nav-menu">
         <a href="#about" class="nav-link">Про лікаря</a>
-        <a href="#cases" class="nav-link">Результати</a>
         <a href="#services" class="nav-link">Послуги</a>
         <a href="#quiz" class="nav-link">Підбір системи</a>
         <a href="#process" class="nav-link">Етапи</a>
@@ -94,7 +93,6 @@
     </div>
     <div class="drawer-links">
       <a href="#about" class="mobile-nav-link">Про лікаря</a>
-      <a href="#cases" class="mobile-nav-link">Результати (До / Після)</a>
       <a href="#services" class="mobile-nav-link">Послуги та технології</a>
       <a href="#quiz" class="mobile-nav-link">Онлайн підбір системи</a>
       <a href="#process" class="mobile-nav-link">Етапи лікування</a>
@@ -117,11 +115,17 @@
   <main>
     <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
+      <!-- Hero background video -->
+      <video class="hero-bg" autoplay muted loop playsinline preload="metadata">
+        <source src="assets/video/hero-background.mp4" type="video/mp4">
+        Ваш браузер не підтримує HTML5‑відео.
+      </video>
+      <div class="hero-attenuator"></div>
       <div class="container hero-container">
         <div class="hero-content">
           <div class="hero-status-pill">
             <span class="pulse-indicator"></span>
-            <span>Сертифікований фахівець Invisalign & Damon System</span>
+            <span>Сертифікований фахівець Invisalign & GC Chic</span>
           </div>
 
           <h1 class="hero-headline">
@@ -136,10 +140,6 @@
             <a href="#contact" class="btn btn-primary btn-lg">
               <span>Записатися на 3D-діагностику</span>
               <i class="fa-solid fa-calendar-check"></i>
-            </a>
-            <a href="#cases" class="btn btn-secondary btn-lg">
-              <i class="fa-solid fa-sliders"></i>
-              <span>Клінічні кейси</span>
             </a>
           </div>
 
@@ -181,117 +181,9 @@
       </div>
     </section>
 
-    <!-- SECTION: BEFORE & AFTER INTERACTIVE COMPARISON SLIDER -->
-    <section class="cases-section" id="cases">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-tag">Клінічна майстерність</span>
-          <h2 class="section-title">Трансформація посмішок (До / Після)</h2>
-          <p class="section-lead">
-            Потягніть інтерактивний слайдер, щоб наочно побачити зміни форми зубних дуг, контактів та гармонії обличчя.
-          </p>
-        </div>
-
-        <!-- Filter Buttons Bar -->
-        <div class="cases-filter-bar">
-          <button class="filter-tab active" data-filter="all">Всі випадки</button>
-          <button class="filter-tab" data-filter="aligners">Елайнери Invisalign</button>
-          <button class="filter-tab" data-filter="braces-ceramic">Керамічні Damon Clear</button>
-          <button class="filter-tab" data-filter="braces-metal">Металеві Damon Q2</button>
-          <button class="filter-tab" data-filter="complex">СНЩС & Гнатологія</button>
-        </div>
-
-        <!-- Comparison Showcase Box -->
-        <div class="cases-layout-grid">
-          <div class="slider-panel">
-            <div class="comparison-slider-wrapper">
-              <div id="comparison-slider-stage" class="comparison-stage">
-                <!-- After Image (Base) -->
-                <img
-                  src="assets/images/2.jpg"
-                  alt="Результат лікування Після"
-                  class="comparison-image comparison-image-after"
-                  onerror="this.src='https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80'"
-                >
-
-                <!-- Before Image (Clipped Overlay) -->
-                <div class="comparison-image-before-wrapper" style="width: 50%;">
-                  <img
-                    src="assets/images/1.jpg"
-                    alt="Стан зубів До лікування"
-                    class="comparison-image comparison-image-before"
-                    onerror="this.src='https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80'"
-                  >
-                  <div class="stage-label label-before">ДО ЛІКУВАННЯ</div>
-                </div>
-                <div class="stage-label label-after">ПІСЛЯ</div>
-
-                <!-- Interactive Drag Handle Bar -->
-                <div class="comparison-handle" aria-label="Слайдер порівняння До і Після" style="left: 50%;">
-                  <div class="handle-line"></div>
-                  <div class="handle-thumb">
-                    <i class="fa-solid fa-arrows-left-right"></i>
-                  </div>
-                  <div class="handle-line"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Thumbnail Strip -->
-            <div class="cases-thumbnail-grid">
-              <div class="case-thumb" data-index="0">
-                <img src="assets/images/2.jpg" alt="Кейс 1">
-                <span class="thumb-label">Елайнери</span>
-              </div>
-              <div class="case-thumb" data-index="1">
-                <img src="assets/images/4.jpg" alt="Кейс 2">
-                <span class="thumb-label">Кераміка</span>
-              </div>
-              <div class="case-thumb" data-index="2">
-                <img src="assets/images/6.jpg" alt="Кейс 3">
-                <span class="thumb-label">Метал</span>
-              </div>
-              <div class="case-thumb" data-index="3">
-                <img src="assets/images/8.jpg" alt="Кейс 4">
-                <span class="thumb-label">Гнатологія</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Case Info Panel -->
-          <div class="case-info-panel">
-            <div class="case-badge-pill">Клінічний розбір</div>
-            <h3 id="case-active-title" class="case-active-title">Виправлення скупченості зубів елайнерами Invisalign</h3>
-
-            <div class="case-specs-list">
-              <div class="spec-row">
-                <span class="spec-name"><i class="fa-solid fa-notes-medical"></i> Діагноз:</span>
-                <span id="case-active-diagnosis" class="spec-val">Скупченість різців верхньої та нижньої щелеп, дефіцит місця 4 мм</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-name"><i class="fa-regular fa-clock"></i> Термін:</span>
-                <span id="case-active-duration" class="spec-val">11 місяців</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-name"><i class="fa-solid fa-toolbox"></i> Апаратура:</span>
-                <span id="case-active-apparatus" class="spec-val">Invisalign Full (24 капи)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-name"><i class="fa-solid fa-user"></i> Вік:</span>
-                <span id="case-active-age" class="spec-val">28 років</span>
-              </div>
-            </div>
-
-            <div class="case-summary-block">
-              <h4>Результат лікаря:</h4>
-              <p id="case-active-summary">Повне вирівнювання зубних дуг без видалення премолярів. Створено ідеальну естетичну лінію посмішки.</p>
-            </div>
-
-            <a href="#contact" class="btn btn-primary btn-block">Хочу схожий результат</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- SECTION: CASES (ТРАНСФОРМАЦІЇ) — ТИМЧАСОВО ВИКЛЮЧЕНО -->
+    <!-- TODO: створити новий варіант cases-section. Поточний інтерактивний слайдер та кейси видалені. -->
+    <section id="cases" style="height: 0; overflow: hidden;"></section>
 
     <!-- SECTION: ABOUT DR. ALINA -->
     <section class="about-section" id="about">
@@ -472,16 +364,16 @@
             </div>
           </div>
 
-          <!-- Bento 2: Ceramic Damon Clear -->
+          <!-- Bento 2: GC Chic Ceramic Braces -->
           <div class="service-card" data-tilt>
             <div class="service-icon-wrap">
               <i class="fa-solid fa-gem"></i>
             </div>
             <div class="service-content-body">
               <span class="service-badge">Естетика + Сила</span>
-              <h3 class="service-card-title">Сапфірово-керамічні брекети</h3>
+              <h3 class="service-card-title">GC Chic керамічні брекети</h3>
               <p class="service-desc">
-                Damon Clear — бездоганні прозорі замочки, які підлаштовуються під колір емалі і не змінюють відтінок від чаю чи кави.
+                GC Chic — це преміальна керамічна система від японського лідера GC Orthodontics. Завдяки унікальній технології CIM (Ceramic Injection Molding) брекети мають ідеально гладку поверхню, мінімальний тертя і не змінюють колір протягом усього лікування. Маленький розмір, округлі краї та відсутність металу роблять їх майже невидимими.
               </p>
             </div>
           </div>
@@ -688,7 +580,7 @@
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
             <p class="testi-quote">
-              «Неймовірний лікар! До лікування мене турбувало сильне клацання в щелепі та головний біль. Аліна Віталіївна провела діагностику суглоба і тільки потім поставила брекети Damon. Біль зник повністю, а посмішка просто вау!»
+              «Неймовірний лікар! До лікування мене турбувало сильне клацання в щелепі та головний біль. Аліна Віталіївна провела діагностику суглоба і тільки потім поставила брекети GC Chic. Біль зник повністю, а посмішка просто вау!»
             </p>
             <div class="testi-author">
               <div class="author-avatar"><i class="fa-solid fa-user-check"></i></div>
@@ -792,7 +684,7 @@
             </button>
             <div class="faq-body">
               <p>
-                Обидва інструменти однаково ефективно виправляють прикус у руках досвідченого лікаря. Елайнери виграють за рахунок непомітності та зручності гігієни, а брекети Damon незамінні при певних складних гнатологічних рухах.
+                Обидва інструменти однаково ефективно виправляють прикус, але запамятайте лікує лікар. Памятайте, що елайнери чи брекети це лише інструмент в руках досвідченого лікаря. Елайнери виграють за рахунок непомітності та зручності гігієни, а брекети більш показані для гнатологічно-ортодонтичних пацієнтів.
               </p>
             </div>
           </div>
@@ -809,7 +701,7 @@
             </button>
             <div class="faq-body">
               <p>
-                Завдяки самолігуючим системам Damon та елайнерам Invisalign, вам не потрібно приходити щомісяця. Контрольні візити відбуваються 1 раз на 6–10 тижнів, що дуже зручно для зайнятих людей та тих, хто подорожує.
+                Завдяки самолігуючим системам GC Chic та елайнерам Invisalign, вам не потрібно приходити щомісяця. Контрольні візити відбуваються 1 раз на 6–10 тижнів, що дуже зручно для зайнятих людей та тих, хто подорожує.
               </p>
             </div>
           </div>
@@ -902,7 +794,7 @@
                   <select id="service-select">
                     <option value="consultation">Первинна 3D-консультація та огляд</option>
                     <option value="invisalign">Прозорі елайнери Invisalign</option>
-                    <option value="damon-clear">Керамічні брекети Damon Clear</option>
+                    <option value="gc-chic">Керамічні брекети GC Chic</option>
                     <option value="damon-q2">Металеві брекети Damon Q2</option>
                     <option value="kids">Дитяча ортодонтія (Marco Rosa)</option>
                     <option value="tmj">Діагностика СНЩС / Сплінт-терапія</option>
@@ -951,9 +843,7 @@
           <span class="footer-heading">Навігація</span>
           <ul class="footer-links">
             <li><a href="#about">Про лікаря</a></li>
-            <li><a href="#cases">Клінічні кейси</a></li>
             <li><a href="#services">Послуги</a></li>
-            <li><a href="#quiz">Онлайн-тест</a></li>
             <li><a href="#process">Етапи лікування</a></li>
           </ul>
         </div>
@@ -962,7 +852,7 @@
           <span class="footer-heading">Послуги</span>
           <ul class="footer-links">
             <li><a href="#services">Елайнери Invisalign</a></li>
-            <li><a href="#services">Брекети Damon Clear</a></li>
+            <li><a href="#services">Керамічні брекети GC Chic</a></li>
             <li><a href="#services">Брекети Damon Q2</a></li>
             <li><a href="#services">Сплінт-терапія СНЩС</a></li>
             <li><a href="#services">Дитячі пластинки</a></li>
@@ -1006,7 +896,6 @@
 
   <!-- Modular Application Scripts -->
   <script src="js/three-bg-lite.js"></script>
-  <script src="js/slider.js"></script>
   <script src="js/quiz.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/main.js"></script>
