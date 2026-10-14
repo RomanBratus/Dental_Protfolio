@@ -20,6 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
 
+  // Mobile: ensure hero video plays automatically on first interaction
+  const heroVideo = document.querySelector('.hero-bg');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.playsInline = true;
+
+    // Try autoplay on load (works on mobile when muted + playsinline)
+    heroVideo.play().catch(() => {
+      // Safari fallback: autoplay after first touch
+      const tryPlay = () => {
+        heroVideo.play().then(() => {
+          document.removeEventListener('touchstart', tryPlay);
+          document.removeEventListener('scroll', tryPlay);
+        }).catch(() => {});
+      };
+      document.addEventListener('touchstart', tryPlay, { once: true });
+      document.addEventListener('scroll', tryPlay, { once: true });
+    });
+  }
+
   // Mobile Nav Drawer
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const mobileDrawer = document.getElementById('mobile-nav-drawer');
