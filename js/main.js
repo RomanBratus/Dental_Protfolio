@@ -118,11 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const data = {
-      name: bookingForm.patient-name.value.trim(),
-      phone: bookingForm.patient-phone.value.trim(),
-      location: bookingForm.location-select.selectedOptions[0]?.textContent || '',
-      service: bookingForm.service-select.selectedOptions[0]?.textContent || '',
-      comment: bookingForm.booking-comment.value.trim(),
+      name: document.getElementById('patient-name')?.value.trim(),
+      phone: document.getElementById('patient-phone')?.value.trim(),
+      location: document.getElementById('location-select')?.selectedOptions[0]?.textContent || '',
+      service: document.getElementById('service-select')?.selectedOptions[0]?.textContent || '',
+      comment: document.getElementById('booking-comment')?.value.trim(),
     };
 
     const message = buildTelegramMessage(data);
