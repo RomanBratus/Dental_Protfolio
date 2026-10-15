@@ -238,11 +238,11 @@ body {
   --r: var(--radius-full);
   --tr: 25%;
   position: relative;
-  background: rgba(0, 0, 0, 0.02);
+  background: var(--bg-surface);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border: 1px double rgba(51, 51, 51, 0.08);
-  color: #3e3e3e;
+  color: var(--text-primary);
   box-shadow:
     inset 2px -2px 1px -1px rgba(255, 255, 255, 0.9),
     inset -2px 2px 1px -1px rgba(255, 255, 255, 0.9),
@@ -301,9 +301,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #3e3e3e;
+  background: var(--bg-surface);
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.25s;
   flex-shrink: 0;
 }
@@ -478,7 +478,7 @@ body {
 
 .btn-secondary:hover {
   border-color: var(--accent-mint);
-  background: rgba(26, 37, 47, 0.9);
+  background: var(--bg-glass-card);
   color: var(--accent-mint);
   transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
@@ -829,7 +829,7 @@ body {
 .mobile-nav-drawer {
   position: fixed;
   inset: 0;
-  background: rgba(7, 11, 14, 0.96);
+  background: var(--bg-glass);
   backdrop-filter: blur(25px);
   z-index: 999;
   display: flex;
@@ -1123,7 +1123,7 @@ body {
 .floating-badge {
   position: absolute;
   padding: 12px 20px;
-  background: rgba(19, 27, 34, 0.88);
+  background: var(--bg-surface-elevated);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
@@ -1580,7 +1580,7 @@ body {
 
 .service-card-featured {
   grid-column: span 2;
-  background: linear-gradient(135deg, rgba(26, 37, 47, 0.95) 0%, rgba(13, 19, 24, 0.98) 100%);
+  background: var(--gradient-surface);
   border-color: rgba(0, 240, 181, 0.3);
 }
 
@@ -2108,6 +2108,13 @@ body {
 [data-theme="dark"] .faq-icon {
   background: #ffffff;
   color: #000000;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .faq-icon {
+  background: #0f172a;
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .faq-body {
@@ -2870,4 +2877,17 @@ body {
     left: 20px;
     padding: 16px 20px;
   }
+}
+
+/* Hide list markers in service mini-features */
+.service-mini-features li::marker,
+.service-mini-features li::before,
+.service-mini-features li::after {
+  display: none;
+  content: none;
+}
+
+.service-mini-features {
+  list-style: none;
+  padding-left: 0;
 }

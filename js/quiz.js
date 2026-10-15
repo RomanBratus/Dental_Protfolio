@@ -137,8 +137,8 @@ class TreatmentQuiz {
     } else if (priority === 'fast' || goal === 'bite') {
       system = {
         badge: 'Швидкість та точність',
-        title: 'Самолігуючі брекети Damon Q2 (Ormco, США)',
-        desc: 'Високотехнологічні пасивні замки зменшують тертя, скорочують термін лікування на 4-6 місяців і вимагають візитів до лікаря лише 1 раз на 8 тижнів.'
+        title: 'American Orthodontics Mini Master® Brackets',
+        desc: 'Металеві брекети з малим профілем та інноваційною конструкцією. Забезпечують високу ефективність, комфорт і точність корекції прикусу.'
       };
     } else if (priority === 'invisible' && goal !== 'child') {
       system = {
