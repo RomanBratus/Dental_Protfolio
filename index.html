@@ -13,7 +13,7 @@
   <!-- NOTE: frame-ancestors та X-Frame-Options працюють лише як HTTP-заголовки,
        у <meta> їх ігнорується браузером. Для повного захисту налаштуйте
        серверні заголовки — див. docs/security.md -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://api.telegram.org;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; connect-src 'self' https://api.telegram.org https://romanbratus.github.io https://dental-portfolio-backend.onrender.com;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="robots" content="index, follow, noimageindex">
@@ -308,10 +308,10 @@
               <!-- Tab 3 -->
               <div id="tab-methods" class="about-tab-content">
                 <p class="tab-desc-text">
-                  У своїй практиці застосовую 100% цифровий протокол: інтраоральне 3D-сканування iTero замість неприємних силіконових зліпків, комп’ютерне прогнозування траєкторії руху кожного кореня та віртуальний сетап кінцевого результату.
+                  У своїй практиці застосовую переважно цифровий протокол: інтраоральне 3D-сканування, але бувають ситуації, коли використовуються класичні силіконові зліпків. Одне з важливих обстежень бокова цефалометрія черепа та комп’ютерна томографія (CBCT), що дозволяє оцінити стан кісткової тканини, коренів зубів та скронево-нижньощелепного суглоба.
                 </p>
                 <div class="tech-pills-row">
-                  <span class="tech-pill"><i class="fa-solid fa-qrcode"></i> iTero 3D Scan</span>
+                  <span class="tech-pill"><i class="fa-solid fa-qrcode"></i> 3D сканування</span>
                   <span class="tech-pill"><i class="fa-solid fa-laptop-code"></i> ClinCheck Pro</span>
                   <span class="tech-pill"><i class="fa-solid fa-magnet"></i> CBCT 3D Tomography</span>
                 </div>
@@ -630,7 +630,7 @@
             </button>
             <div class="faq-body">
               <p>
-                Так, абсолютно! Для ортодонтії немає вікових обмежень — зуби переміщуються у будь-якому віці за умови здорових ясен та кісткової тканини. Більше 45% моїх пацієнтів — дорослі люди від 25 до 55 років.
+                Так! Для ортодонтії немає вікових обмежень — зуби переміщуються у будь-якому віці за умови здорових ясен та кісткової тканини. Більше 45% моїх пацієнтів — дорослі люди від 25 до 59 років.
               </p>
             </div>
           </div>
@@ -664,7 +664,7 @@
             </button>
             <div class="faq-body">
               <p>
-                Не завжди. Рішення приймається індивідуально після 3D-комп'ютерної томографії. Якщо вісімки не тиснуть на сусідні зуби і не заважають створенню правильного прикусу, їх можна зберегти.
+                Рішення, що до видалення зубів мудрості приймається індивідуально, після огляду та аналізу рентгенівських знімків. У більшості випадків вони створюють дефіцит місця для правильного росту зубів, тому видалення може бути необхідним рішенням для досягнення кінцевого лікувального результату. 
               </p>
             </div>
           </div>
@@ -698,7 +698,7 @@
             </button>
             <div class="faq-body">
               <p>
-                Завдяки самолігуючим системам GC Chic та елайнерам Invisalign, вам не потрібно приходити щомісяця. Контрольні візити відбуваються 1 раз на 6–10 тижнів, що дуже зручно для зайнятих людей та тих, хто подорожує.
+                Відвідування лікаря на метатевих чи естетичних брекет системах необхідно кожні 3-4 тижні. Якщо Ваше лікування проходитиме елайнерами Invisalign, рекомендоване відвідування раз на 3-4 місіці. Терміни можуть коригуватись лікарем залежно від системи та фази лікування.
               </p>
             </div>
           </div>
@@ -732,7 +732,7 @@
                 <div class="detail-icon"><i class="fa-solid fa-phone"></i></div>
                 <div>
                   <strong>Телефон для запису:</strong>
-                  <a>надається лікарем після консультації</a>
+                  <a>Надається лікарем після консультації</a>
                 </div>
               </div>
 
@@ -877,7 +877,7 @@
         <div class="footer-contact-col">
           <span class="footer-heading">Контакти</span>
           <p><i class="fa-solid fa-location-dot"></i> м. Київ район Оболонь, Лукянівка, Центр<br>м. Кагарлик<br>м. Калинівка</p>
-          <p><i class="fa-solid fa-phone"></i> +380 (99) 123-45-67</p>
+          <p><i class="fa-solid fa-phone"></i> Надається лікарем після консультації</p>
           <p><i class="fa-solid fa-envelope"></i> dr.alinabratus@gmail.com</p>
           <div class="footer-social-icons">
             <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -900,7 +900,7 @@
     </div>
     <div class="toast-content">
       <h4 class="toast-title">Запис оформлено!</h4>
-      <p class="toast-msg">Ми зв’яжемося з вами протягом 15 хвилин.</p>
+      <p class="toast-msg">Ми зв’яжемося з вами.</p>
     </div>
   </div>
 

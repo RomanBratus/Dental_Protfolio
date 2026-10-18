@@ -102,8 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Booking Form Submission & Toast Alert
   const bookingForm = document.getElementById('appointment-form');
   const toast = document.getElementById('toast-notification');
-  const TELEGRAM_BOT_TOKEN = '8717914768:AAEWpxMjbItLrUiG7FytiZ_TNt0shBHiUCg';
-  const TELEGRAM_CHAT_ID = '-5024101596';
+  // Telegram bot credentials are now handled by Netlify function
+  // The actual token is stored securely in Netlify environment variables
+  const TELEGRAM_ENDPOINT = '/.netlify/functions/telegram';
 
   function showToast(title, message) {
     const titleEl = toast?.querySelector('.toast-title');
@@ -177,20 +178,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      const response = await fetch(TELEGRAM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message,
-          parse_mode: 'HTML',
-          disable_web_page_preview: true,
+          name: data.name,
+          phone: data.phone,
+          location: data.location,
+          service: data.service,
+          comment: data.comment,
         }),
       });
 
+      // Check if response is JSON before parsing
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(`Server returned non-JSON response (status ${response.status}): ${text.substring(0, 100)}`);
+      }
+
       const json = await response.json();
 
-      if (!json.ok) throw new Error(json.description || 'Telegram API error');
+      if (!json.success) throw new Error(json.error || 'Telegram API error');
 
       // Update localStorage counter
       localStorage.setItem('bookingDate', today);

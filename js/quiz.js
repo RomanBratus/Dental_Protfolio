@@ -84,21 +84,42 @@ class TreatmentQuiz {
     if (this.optionsGrid) {
       this.optionsGrid.innerHTML = '';
       step.options.forEach((opt) => {
+        // Special handling for age selection step (stepIndex 2)
+        let isDisabled = false;
+        if (stepIndex === 2) {
+          // If goal is prosthetics, disable age-child option (6-12 years)
+          if (this.answers[0] === 'prosthetics' && opt.id === 'age-child') {
+            isDisabled = true;
+          }
+          // If goal is child, we skip age selection entirely (handled below)
+        }
+
         const isSelected = this.answers[stepIndex] === opt.id;
         const optCard = document.createElement('div');
-        optCard.className = `quiz-option-card ${isSelected ? 'selected' : ''}`;
+        optCard.className = `quiz-option-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
         optCard.innerHTML = `
           <div class="quiz-option-icon"><i class="${opt.icon}"></i></div>
           <span class="quiz-option-text">${opt.label}</span>
         `;
-        optCard.addEventListener('click', () => {
-          this.answers[stepIndex] = opt.id;
-          this.optionsGrid.querySelectorAll('.quiz-option-card').forEach(c => c.classList.remove('selected'));
-          optCard.classList.add('selected');
-          if (this.nextBtn) this.nextBtn.removeAttribute('disabled');
-        });
-        this.optionsGrid.appendChild(optCard);
+
+        // Skip disabled options
+        if (!isDisabled) {
+          optCard.addEventListener('click', () => {
+            this.answers[stepIndex] = opt.id;
+            this.optionsGrid.querySelectorAll('.quiz-option-card').forEach(c => c.classList.remove('selected'));
+            optCard.classList.add('selected');
+            if (this.nextBtn) this.nextBtn.removeAttribute('disabled');
+          });
+          this.optionsGrid.appendChild(optCard);
+        }
       });
+
+      // Special case: if goal is child, skip age selection and go directly to result
+      if (stepIndex === 2 && this.answers[0] === 'child') {
+        this.answers[2] = 'age-child'; // Set age to child
+        this.calculateResult();
+        return;
+      }
     }
 
     // Toggle Back button
@@ -128,7 +149,15 @@ class TreatmentQuiz {
       desc: 'Ідеальне рішення для вашого запиту: 100% непомітні прозорі капи з надточним 3D-моделюванням результату ще до початку лікування. Знімаються під час їжі та чищення зубів.'
     };
 
-    if (age === 'age-child') {
+    // Special case: child treatment goal automatically selects Marco Rosa
+    if (goal === 'child') {
+      system = {
+        badge: 'Раннє дитяче лікування',
+        title: 'Апарати Marco Rosa & функціональні пластинки',
+        desc: 'Спеціально розроблено для м’якої корекції росту щелеп, усунення шкідливих звичок та створення простору для постійних зубів без дискомфорту.'
+      };
+    }
+    else if (age === 'age-child') {
       system = {
         badge: 'Раннє дитяче лікування',
         title: 'Апарати Marco Rosa & функціональні пластинки',

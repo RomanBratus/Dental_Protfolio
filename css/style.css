@@ -25,6 +25,9 @@
   --gradient-green: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
   --shadow-green: 0 10px 30px rgba(16, 185, 129, 0.25);
 
+  /* Mint accent for theme toggle */
+  --accent-mint: #00f0b5;
+
   /* Gradients */
   --gradient-mint: linear-gradient(135deg, #00f0b5 0%, #38bdf8 100%);
   --gradient-gold: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
@@ -1818,6 +1821,7 @@ body {
   display: none;
   text-align: center;
   animation: fadeIn 0.5s ease forwards;
+  padding-top: 20px;
 }
 
 .quiz-result-badge {
@@ -1841,7 +1845,7 @@ body {
   font-size: 1rem;
   color: var(--text-secondary);
   max-width: 600px;
-  margin: 0 auto 30px;
+  margin: 0 auto 40px;
   line-height: 1.6;
 }
 
@@ -1960,6 +1964,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
+  padding-top: 20px;
 }
 
 .testimonial-card {
@@ -2042,6 +2047,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-top: 20px;
 }
 
 .faq-item {
@@ -2880,11 +2886,12 @@ body {
 }
 
 /* Hide list markers in service mini-features */
-.service-mini-features li::marker,
-.service-mini-features li::before,
-.service-mini-features li::after {
-  display: none;
+.service-mini-features li::marker {
   content: none;
+}
+
+.service-mini-features li {
+  list-style: none;
 }
 
 .service-mini-features {
