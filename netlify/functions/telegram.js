@@ -52,7 +52,7 @@ exports.handler = async (event, context) => {
       `🦷 *Послуга:* ${body.service || '—'}',
       `💬 *Коментар:* ${body.comment || '—'}',
       '',
-      `*Час відправки:* ${new Date().toLocaleString()}*
+      `*Час відправки:* ${new Date().toLocaleString()}*`
     ].join('\n');
 
     // Send to Telegram

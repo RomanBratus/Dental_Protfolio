@@ -26,7 +26,6 @@ tmp/
 *.sublime-workspace
 
 # Netlify
-.netlify/functions/*.js
 .netlify/functions/env.json
 
 # Secrets and credentials

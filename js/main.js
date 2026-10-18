@@ -190,6 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }),
       });
 
+      // Check if response is JSON before parsing
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(`Server returned non-JSON response (status ${response.status}): ${text.substring(0, 100)}`);
+      }
+
       const json = await response.json();
 
       if (!json.success) throw new Error(json.error || 'Telegram API error');
