@@ -120,3 +120,13 @@ if (themeToggle) {
     updateThemeIcon(newTheme);
   });
 }
+
+// FAQ accordion functionality
+document.querySelectorAll('.faq-header').forEach((button) => {
+  button.addEventListener('click', () => {
+    const faqItem = button.closest('.faq-item');
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    faqItem?.classList.toggle('active');
+  });
+});
