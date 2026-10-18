@@ -1,0 +1,9 @@
+# Netlify Configuration for Dental Portfolio
+
+[build]
+  command = "echo 'Static site - no build required'"
+  publish = "."
+
+[[functions]]
+  path = "telegram"
+  script = "telegram.js"

@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+
+# Build output
+.dsf
+.nuxt
+tmp/
+*.log
+
+# Environment files
+.env*
+.env.local
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+*.sublime-workspace
+
+# Netlify
+.netlify/functions/*.js
+.netlify/functions/env.json
+
+# Secrets and credentials
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs and caches
+logs/
+cache/
+*.log.*
+
+# OS
+Thumbs.db
+
+# Media assets (if not committed)
+*.mp4
+*.avi
+*.mov
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# System files
+/system.*
+/usr/local/etc
+
+# Other
+coverage/
+.vscode-test/
+*.orig
+*.rej
