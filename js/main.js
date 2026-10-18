@@ -97,3 +97,16 @@ bookingForm?.addEventListener('submit', async (e) => {
     submitBtn.removeAttribute('disabled');
   }
 });
+
+// ponytail: Theme toggle logic
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+const storedTheme = localStorage.getItem('theme') || 'dark';
+root.setAttribute('data-theme', storedTheme);
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+}
