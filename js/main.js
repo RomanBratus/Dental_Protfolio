@@ -2,8 +2,10 @@
 const bookingForm = document.getElementById('appointment-form');
 const toast = document.getElementById('toast-notification');
 
-// ponytail: Backend endpoint for form submission (same origin)
-const API_ENDPOINT = window.location.hostname === 'localhost' ? 'http://localhost:3000/api/contact' : '/api/contact';
+// ponytail: Backend endpoint for form submission
+const API_ENDPOINT = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000/api/contact'
+  : 'https://dental-portfolio-backend.onrender.com/api/contact';
 
 function showToast(title, message) {
   const titleEl = toast?.querySelector('.toast-title');
@@ -81,20 +83,15 @@ bookingForm?.addEventListener('submit', async (e) => {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      // Show error from backend
-      showToast('Помилка!', result.error || 'Не вдалося відправити заявку. Спробуйте ще раз або зв\'яжіться з клінікою.');
+      showToast('Помилка!', result.error || 'Не вдалося відправити заявку.');
     } else {
-      // Show a friendly success message
       showToast('Дякую!', 'Ваша заявка успішно відправлена. Ми зв\'яжемося з вами найближчим часом.');
-      // Reset the form only on success
-      if (bookingForm) bookingForm.reset();
+      bookingForm.reset();
     }
   } catch (error) {
-    // Network or server error
-    showToast('Помилка!', 'Сталася помилка. Спробуйте ще раз або зателефонуйте нам.');
+    showToast('Помилка!', 'Сталася помилка. Спробуйте ще раз.');
   }
 
-  // Always re-enable the button
   if (submitBtn) {
     submitBtn.innerHTML = originalText;
     submitBtn.removeAttribute('disabled');
