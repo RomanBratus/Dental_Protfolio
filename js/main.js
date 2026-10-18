@@ -2,36 +2,32 @@
 const bookingForm = document.getElementById('appointment-form');
 const toast = document.getElementById('toast-notification');
 
-// ponytail: Backend endpoint for form submission
-const API_ENDPOINT = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000/api/contact'
-  : 'https://dental-portfolio-backend.onrender.com/api/contact';
+const TELEGRAM_BOT_TOKEN = '8717914768:AAEWpxMjbItLrUiG7FytiZ_TNt0shBHiUCg';
+const TELEGRAM_CHAT_ID = '-5024101596';
+const TELEGRAM_API = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
 function showToast(title, message) {
   const titleEl = toast?.querySelector('.toast-title');
   const msgEl = toast?.querySelector('.toast-msg');
-
   if (titleEl) titleEl.textContent = title;
   if (msgEl) msgEl.textContent = message;
   if (!toast) return;
-
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 5000);
 }
 
-function buildTelegramMessage(data) {
+function buildMessage(data) {
   return [
-    '📝 *Запис пацієнта з сайту*',
+    '📝 <b>Запис пацієнта з сайту</b>',
     '',
-    `👤 *Ім'я:* ${data.name}`,
-    `📞 *Телефон:* ${data.phone}`,
-    `📍 *Локація:* ${data.location}`,
-    `🦷 *Послуга:* ${data.service}`,
-    `💬 *Коментар:* ${data.comment || '—'}`,
+    `<b>Ім'я:</b> ${data.name}`,
+    `<b>Телефон:</b> ${data.phone}`,
+    `<b>Локація:</b> ${data.location}`,
+    `<b>Послуга:</b> ${data.service}`,
+    `<b>Коментар:</b> ${data.comment || '—'}`,
   ].join('\n');
 }
 
-// ponytail: mutual exclusivity — selecting one list resets the other
 const consultationSelect = document.getElementById('consultation-select');
 const procedureSelect = document.getElementById('procedure-select');
 if (consultationSelect && procedureSelect) {
@@ -63,7 +59,6 @@ bookingForm?.addEventListener('submit', async (e) => {
     comment: document.getElementById('booking-comment')?.value.trim(),
   };
 
-  // Validate required fields
   if (!data.name || !data.phone || !data.location || !data.service) {
     showToast('Увага', 'Будь ласка, заповніть всі обов\'язкові поля.');
     if (submitBtn) {
@@ -74,16 +69,21 @@ bookingForm?.addEventListener('submit', async (e) => {
   }
 
   try {
-    const response = await fetch(API_ENDPOINT, {
+    const response = await fetch(TELEGRAM_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: buildMessage(data),
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+      }),
     });
 
     const result = await response.json();
 
-    if (!response.ok || !result.success) {
-      showToast('Помилка!', result.error || 'Не вдалося відправити заявку.');
+    if (!result.ok) {
+      showToast('Помилка!', result.description || 'Не вдалося відправити заявку.');
     } else {
       showToast('Дякую!', 'Ваша заявка успішно відправлена. Ми зв\'яжемося з вами найближчим часом.');
       bookingForm.reset();
@@ -98,7 +98,7 @@ bookingForm?.addEventListener('submit', async (e) => {
   }
 });
 
-// ponytail: Theme toggle logic
+// Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
 const storedTheme = localStorage.getItem('theme') || 'dark';
