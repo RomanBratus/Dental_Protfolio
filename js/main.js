@@ -130,3 +130,24 @@ document.querySelectorAll('.faq-header').forEach((button) => {
     faqItem?.classList.toggle('active');
   });
 });
+
+// Ensure hero background video autoplays on mobile
+const heroVideo = document.querySelector('.hero-bg');
+if (heroVideo) {
+  const playVideo = () => {
+    heroVideo.play().catch(e => {
+      console.warn('Hero video autoplay failed (may require user interaction):', e);
+    });
+  };
+
+  if (heroVideo.readyState >= 2) {
+    playVideo();
+  } else {
+    heroVideo.addEventListener('loadeddata', playVideo, { once: true });
+    heroVideo.addEventListener('canplay', playVideo, { once: true });
+  }
+
+  // Also try on first user interaction (mobile workaround)
+  document.addEventListener('touchstart', playVideo, { once: true });
+  document.addEventListener('click', playVideo, { once: true });
+}
