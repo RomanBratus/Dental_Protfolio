@@ -101,12 +101,22 @@ bookingForm?.addEventListener('submit', async (e) => {
 // Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
-const storedTheme = localStorage.getItem('theme') || 'dark';
+const storedTheme = localStorage.getItem('theme') || root.getAttribute('data-theme') || 'dark';
 root.setAttribute('data-theme', storedTheme);
+
+function updateThemeIcon(theme) {
+  const icon = themeToggle?.querySelector('i');
+  if (icon) {
+    icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+}
+
 if (themeToggle) {
+  updateThemeIcon(storedTheme);
   themeToggle.addEventListener('click', () => {
     const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
   });
 }

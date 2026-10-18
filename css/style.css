@@ -27,6 +27,8 @@
 
   /* Mint accent for theme toggle */
   --accent-mint: #00f0b5;
+  --accent-mint-glow: rgba(0, 240, 181, 0.35);
+  --accent-mint-light: rgba(0, 240, 181, 0.12);
 
   /* Gradients */
   --gradient-mint: linear-gradient(135deg, #00f0b5 0%, #38bdf8 100%);
