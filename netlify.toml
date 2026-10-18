@@ -4,6 +4,5 @@
   command = "echo 'Static site - no build required'"
   publish = "."
 
-[[functions]]
-  path = "telegram"
-  script = "telegram.js"
+[functions]
+  directory = "netlify/functions"
