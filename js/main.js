@@ -1,9 +1,9 @@
 // Booking Form Submission & Toast Alert
 const bookingForm = document.getElementById('appointment-form');
 const toast = document.getElementById('toast-notification');
-// Telegram bot credentials are now handled by Netlify function
-// The actual token is stored securely in Netlify environment variables
-const TELEGRAM_ENDPOINT = '/.netlify/functions/telegram';
+
+// ponytail: Backend endpoint for form submission (same origin)
+const API_ENDPOINT = window.location.hostname === 'localhost' ? 'http://localhost:3000/api/contact' : '/api/contact';
 
 function showToast(title, message) {
   const titleEl = toast?.querySelector('.toast-title');
@@ -61,14 +61,9 @@ bookingForm?.addEventListener('submit', async (e) => {
     comment: document.getElementById('booking-comment')?.value.trim(),
   };
 
-  const message = buildTelegramMessage(data);
-
-  // ponytail: rate limit 5 submissions/day per device via localStorage
-  const today = new Date().toISOString().slice(0, 10);
-  const stored = localStorage.getItem('bookingDate');
-  const count = stored === today ? (parseInt(localStorage.getItem('bookingCount')) || 0) : 0;
-  if (count >= 5) {
-    showToast('Вибачте!', "З вашого пристрою вже відправлено 5 заявок сьогодні. Лікар ознайомиться з ними і вийде з вами на зв'язок. Очікуйте.");
+  // Validate required fields
+  if (!data.name || !data.phone || !data.location || !data.service) {
+    showToast('Увага', 'Будь ласка, заповніть всі обов\'язкові поля.');
     if (submitBtn) {
       submitBtn.innerHTML = originalText;
       submitBtn.removeAttribute('disabled');
@@ -76,14 +71,32 @@ bookingForm?.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Since we removed Netlify, we cannot send to Telegram directly.
-  // Show a message that the backend is not configured.
-  showToast('Увага', "Форма відправки повідомлення тимчасово недоступна. Будь ласка, зв'яжіться з клінікою телефоном або електронною поштою.");
+  try {
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      // Show error from backend
+      showToast('Помилка!', result.error || 'Не вдалося відправити заявку. Спробуйте ще раз або зв\'яжіться з клінікою.');
+    } else {
+      // Show a friendly success message
+      showToast('Дякую!', 'Ваша заявка успішно відправлена. Ми зв\'яжемося з вами найближчим часом.');
+      // Reset the form only on success
+      if (bookingForm) bookingForm.reset();
+    }
+  } catch (error) {
+    // Network or server error
+    showToast('Помилка!', 'Сталася помилка. Спробуйте ще раз або зателефонуйте нам.');
+  }
+
+  // Always re-enable the button
   if (submitBtn) {
     submitBtn.innerHTML = originalText;
     submitBtn.removeAttribute('disabled');
   }
-
-  // Log the data for debugging (optional)
-  console.log('Form submission data:', data);
 });

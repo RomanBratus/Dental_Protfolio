@@ -9,7 +9,6 @@ tmp/
 
 # Environment files
 .env*
-.env.local
 
 # VS Code
 .vscode/
@@ -25,8 +24,6 @@ tmp/
 .idea/
 *.sublime-workspace
 
-# Netlify
-.netlify/functions/env.json
 
 # Secrets and credentials
 *.pem
@@ -45,17 +42,6 @@ cache/
 
 # OS
 Thumbs.db
-
-# Media assets (if not committed)
-*.mp4
-*.avi
-*.mov
-*.webm
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
 
 # System files
 /system.*
