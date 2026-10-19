@@ -131,6 +131,18 @@ document.querySelectorAll('.faq-header').forEach((button) => {
   });
 });
 
+// About section tabs (Філософія / Освіта / Цифровий підхід)
+document.querySelectorAll('.about-tab-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const tabId = btn.getAttribute('data-tab');
+    document.querySelectorAll('.about-tab-btn').forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.about-tab-content').forEach((c) => c.classList.remove('active'));
+    const content = document.getElementById('tab-' + tabId);
+    if (content) content.classList.add('active');
+  });
+});
+
 // Ensure hero background video autoplays on mobile
 const heroVideo = document.querySelector('.hero-bg');
 if (heroVideo) {
