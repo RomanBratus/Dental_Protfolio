@@ -83,3 +83,10 @@ EOF
       - name: Clean up
         run: |
           rm -f notification.txt
+
+  # Dummy job to prevent "No jobs were run" warning
+  dummy:
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - run: echo "Dummy job to avoid 'No jobs were run' warning"
