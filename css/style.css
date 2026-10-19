@@ -142,19 +142,6 @@ body {
   background: var(--accent-mint);
 }
 
-/* Soft green accent palette — harmonized with existing mint site details */
---accent-green: #10b981;
---accent-green-glow: rgba(16, 185, 129, 0.35);
---accent-green-light: rgba(16, 185, 129, 0.12);
---gradient-green: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
---shadow-green: 0 10px 30px rgba(16, 185, 129, 0.25);
-
-/* Light theme green overrides */
---accent-green-glow: rgba(16, 185, 129, 0.25);
---accent-green-light: rgba(16, 185, 129, 0.10);
---gradient-green: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
---shadow-green: 0 10px 30px rgba(16, 185, 129, 0.20);
-
 ::selection {
   background: var(--accent-mint);
   color: var(--text-dark);
@@ -2677,12 +2664,9 @@ body {
 
 /* Cases Filter & Comparison — Mobile */
 @media (max-width: 768px) {
-    }
-
   .case-meta-card {
     padding: 24px 20px;
   }
-
 }
 
 /* About Section — Tablet & Mobile */
@@ -2805,10 +2789,6 @@ body {
 @media (max-width: 768px) {
   .faq-item {
     padding: 18px 20px;
-  }
-
-  .faq-question {
-    font-size: 1rem;
   }
 }
 
