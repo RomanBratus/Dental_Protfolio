@@ -160,8 +160,15 @@ const mobileNavClose = document.getElementById('mobile-nav-close');
 function toggleDrawer(open) {
   if (!mobileNavDrawer) return;
   mobileNavDrawer.classList.toggle('open', open);
-  mobileNavDrawer.setAttribute('aria-hidden', String(!open));
   document.body.style.overflow = open ? 'hidden' : '';
+
+  if (open) {
+    mobileNavDrawer.setAttribute('aria-hidden', 'false');
+    mobileNavClose?.focus();
+  } else {
+    mobileMenuToggle?.focus();
+    mobileNavDrawer.setAttribute('aria-hidden', 'true');
+  }
 }
 
 if (mobileMenuToggle) {
@@ -172,25 +179,33 @@ if (mobileMenuToggle) {
 
 if (mobileNavClose) {
   mobileNavClose.addEventListener('click', () => {
+    mobileMenuToggle?.focus();
     toggleDrawer(false);
   });
 }
 
 // Close drawer on link click
 document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-  link.addEventListener('click', () => toggleDrawer(false));
+  link.addEventListener('click', () => {
+    mobileMenuToggle?.focus();
+    toggleDrawer(false);
+  });
 });
 
 // Close drawer on backdrop click
 if (mobileNavDrawer) {
   mobileNavDrawer.addEventListener('click', (e) => {
-    if (e.target === mobileNavDrawer) toggleDrawer(false);
+    if (e.target === mobileNavDrawer) {
+      mobileMenuToggle?.focus();
+      toggleDrawer(false);
+    }
   });
 }
 
 // Close drawer on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && mobileNavDrawer?.classList.contains('open')) {
+    mobileMenuToggle?.focus();
     toggleDrawer(false);
   }
 });
