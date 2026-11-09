@@ -221,3 +221,39 @@ document.addEventListener('keydown', (e) => {
     toggleDrawer(false);
   }
 });
+
+// Cases gallery lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox?.querySelector('.lightbox-img');
+const lightboxCaption = lightbox?.querySelector('.lightbox-caption');
+
+function openLightbox(src, alt, caption) {
+  if (!lightbox || !lightboxImg) return;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  if (lightboxCaption) lightboxCaption.textContent = caption || alt || '';
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  if (!lightbox) return;
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  if (lightboxImg) lightboxImg.src = '';
+}
+
+document.querySelectorAll('.case-card img').forEach((img) => {
+  img.addEventListener('click', () => {
+    const caption = img.closest('.case-card')?.querySelector('figcaption')?.textContent?.trim();
+    openLightbox(img.getAttribute('src'), img.alt, caption);
+  });
+});
+
+lightbox?.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
+lightbox?.addEventListener('click', (e) => {
+  if (lightbox.contains(e.target)) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightbox?.getAttribute('aria-hidden') === 'false') closeLightbox();
+});

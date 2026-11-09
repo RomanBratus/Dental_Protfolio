@@ -181,9 +181,59 @@
       </div>
     </section>
 
-    <!-- SECTION: CASES (ТРАНСФОРМАЦІЇ) — ТИМЧАСОВО ВИКЛЮЧЕНО -->
-    <!-- TODO: створити новий варіант cases-section. Поточний інтерактивний слайдер та кейси видалені. -->
-    <section id="cases" style="height: 0; overflow: hidden;"></section>
+    <!-- SECTION: CASES (ТРАНСФОРМАЦІЇ) -->
+    <section id="cases" class="cases-section section-spacing">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Зразки робіт</span>
+          <h2 class="section-title">Трансформації посмішок</h2>
+        </div>
+
+        <div class="cases-gallery-group">
+          <h3 class="cases-gallery-title">Керамічні брекети</h3>
+          <div class="cases-grid">
+            <figure class="case-card">
+              <img src="images/ceramic%20brackets%20photos/GC%20Chic%20case%201.jpg" alt="Керамічні брекети GC Chic — кейс 1" loading="eager">
+              <figcaption>GC Chic — кейс 1</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="images/ceramic%20brackets%20photos/GC%20Chic%20case%202.jpg" alt="Керамічні брекети GC Chic — кейс 2" loading="eager">
+              <figcaption>GC Chic — кейс 2</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="images/ceramic%20brackets%20photos/GC%20Chic%20case%203.jpg" alt="Керамічні брекети GC Chic — кейс 3" loading="eager">
+              <figcaption>GC Chic — кейс 3</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="images/ceramic%20brackets%20photos/GC%20Chic%20case%203a.jpg" alt="Керамічні брекети GC Chic — кейс 3a" loading="eager">
+              <figcaption>GC Chic — кейс 3a</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="cases-gallery-group">
+          <h3 class="cases-gallery-title">Металеві брекети</h3>
+          <div class="cases-grid">
+            <figure class="case-card">
+              <img src="images/metal%20brackets%20photos/American%20Orthodontics%20case%201.jpg" alt="Металеві брекети American Orthodontics — кейс 1" loading="lazy">
+              <figcaption>Mini Master® — кейс 1</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="images/metal%20brackets%20photos/American%20Orthodontics%20case%202.jpg" alt="Металеві брекети American Orthodontics — кейс 2" loading="lazy">
+              <figcaption>Mini Master® — кейс 2</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="images/metal%20brackets%20photos/American%20Orthodontics%20case%203.jpg" alt="Металеві брекети American Orthodontics — кейс 3" loading="lazy">
+              <figcaption>Mini Master® — кейс 3</figcaption>
+            </figure>
+            <figure class="case-card">
+              <img src="images/metal%20brackets%20photos/American%20Orthodontics%20case%204.jpg" alt="Металеві брекети American Orthodontics — кейс 4" loading="lazy">
+              <figcaption>Mini Master® — кейс 4</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- SECTION: ABOUT DR. ALINA -->
     <section class="about-section" id="about">
@@ -344,8 +394,10 @@
         <div class="services-bento-grid">
           <!-- Bento 1: Aligners -->
           <div class="service-card bento-hero-card" data-tilt>
-            <div class="service-icon-wrap">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <div class="service-video-wrap">
+              <video class="service-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="assets/video/Aligners.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="service-content-body">
               <span class="service-badge">Флагман естетики</span>
@@ -363,8 +415,10 @@
 
           <!-- Bento 2: GC Chic Ceramic Braces -->
           <div class="service-card" data-tilt>
-            <div class="service-icon-wrap">
-              <i class="fa-solid fa-gem"></i>
+            <div class="service-video-wrap">
+              <video class="service-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="assets/video/GC-Chic-text-background.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="service-content-body">
               <span class="service-badge">Естетика + Сила</span>
@@ -377,22 +431,26 @@
 
           <!-- Bento 3: American Orthodontics Mini Master® Brackets -->
           <div class="service-card" data-tilt>
-            <div class="service-icon-wrap">
-              <i class="fa-solid fa-bolt"></i>
+            <div class="service-video-wrap">
+              <video class="service-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="assets/video/American-Orthodontics-background.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="service-content-body">
               <span class="service-badge">Максимальна швидкість</span>
               <h3 class="service-card-title">American Orthodontics Mini Master® Brackets</h3>
               <p class="service-desc">
-                Низькопрофільні металеві системи останнього покоління. Скорочують тривалість лікування на 4–6 місяців та мінімізують тиск.
+                Вибір 60% моїх пацієнтів. Низькопрофільні металеві системи останнього покоління. Скорочують тривалість лікування на 4–6 місяців та мінімізують тиск в порівнянні з іншими системами.
               </p>
             </div>
           </div>
 
           <!-- Bento 4: Children Orthodontics -->
           <div class="service-card" data-tilt>
-            <div class="service-icon-wrap">
-              <i class="fa-solid fa-child-reaching"></i>
+            <div class="service-video-wrap">
+              <video class="service-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="assets/video/marco-rosa.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="service-content-body">
               <span class="service-badge">Діти 6–12 років</span>
@@ -405,8 +463,10 @@
 
           <!-- Bento 5: TMJ / Splints -->
           <div class="service-card" data-tilt>
-            <div class="service-icon-wrap">
-              <i class="fa-solid fa-arrows-to-circle"></i>
+            <div class="service-video-wrap">
+              <video class="service-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="assets/video/tmj.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="service-content-body">
               <span class="service-badge">Гнатологія</span>
@@ -902,6 +962,15 @@
       <h4 class="toast-title">Запис оформлено!</h4>
       <p class="toast-msg">Ми зв’яжемося з вами.</p>
     </div>
+  </div>
+
+  <!-- Lightbox for cases gallery -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Закрити">&times;</button>
+    <figure class="lightbox-content">
+      <img class="lightbox-img" src="" alt="">
+      <figcaption class="lightbox-caption"></figcaption>
+    </figure>
   </div>
 
   <!-- CDN Dependencies (Optimized) -->
