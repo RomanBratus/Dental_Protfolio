@@ -47,16 +47,6 @@ cache/
 # OS
 Thumbs.db
 
-# Media assets (if not committed)
-*.mp4
-*.avi
-*.mov
-*.webm
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
 
 # System files
 /system.*
