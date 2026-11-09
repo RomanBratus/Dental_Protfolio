@@ -143,26 +143,19 @@ document.querySelectorAll('.about-tab-btn').forEach((btn) => {
   });
 });
 
-// Ensure hero background video autoplays on mobile
-const heroVideo = document.querySelector('.hero-bg');
-if (heroVideo) {
-  const playVideo = () => {
-    heroVideo.play().catch(e => {
-      console.warn('Hero video autoplay failed (may require user interaction):', e);
-    });
-  };
-
-  if (heroVideo.readyState >= 2) {
-    playVideo();
-  } else {
-    heroVideo.addEventListener('loadeddata', playVideo, { once: true });
-    heroVideo.addEventListener('canplay', playVideo, { once: true });
-  }
-
-  // Also try on first user interaction (mobile workaround)
-  document.addEventListener('touchstart', playVideo, { once: true });
-  document.addEventListener('click', playVideo, { once: true });
+// Ensure background videos autoplay on mobile
+function tryPlayVideos(selector) {
+  document.querySelectorAll(selector).forEach((v) => {
+    v.muted = true; // property, required for iOS autoplay
+    const play = () => v.play().catch(() => {});
+    if (v.readyState >= 2) play();
+    else { v.addEventListener('loadeddata', play, { once: true }); v.addEventListener('canplay', play, { once: true }); }
+  });
 }
+tryPlayVideos('.hero-bg, .service-video');
+const kickVideos = () => tryPlayVideos('.hero-bg, .service-video');
+document.addEventListener('touchstart', kickVideos, { once: true, passive: true });
+document.addEventListener('click', kickVideos, { once: true });
 
 // Mobile menu toggle
 const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
